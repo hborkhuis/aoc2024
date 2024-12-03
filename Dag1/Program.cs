@@ -8,7 +8,7 @@ Part2();
 
 void Part1()
 {
-    FillSortedLists(out var first, out var second);
+    FillLists(out var first, out var second);
     first.Sort();
     second.Sort();
     int totalDist = 0;
@@ -19,10 +19,9 @@ void Part1()
     Console.WriteLine($"Total distance: {totalDist}");
 }
 
-// Part 2
 void Part2()
 {
-    FillSortedLists(out var first, out var second);
+    FillLists(out var first, out var second);
     int similarity = 0;
     for (int i = 0; i < first.Count; i++)
     {
@@ -32,14 +31,14 @@ void Part2()
     Console.WriteLine($"Similarity: {similarity}");
 }
 
-void FillSortedLists(out List<int> firstList, out List<int> secondList)
+void FillLists(out List<int> firstList, out List<int> secondList)
 {
     Regex regex = new Regex("(?<first>\\d+) +(?<second>\\d+)");
     var reader = File.OpenText("input.txt");
-    string? line = reader.ReadLine();
     firstList = new List<int>();
     secondList = new List<int>();
 
+    string? line = reader.ReadLine();
     while (line != null)
     {
         Match m = regex.Match(line);
